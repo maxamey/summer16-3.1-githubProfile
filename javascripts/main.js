@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
   requestRepo.addEventListener("load", function(e){
-    var conentRepo = JSON.parse(e.target.response);
+    var contentRepos = JSON.parse(e.target.response);
     var repoString = "";
-    conentRepo.Search.forEach(function(output){
-      listRepo += "<li>" + output + "</li>";
+    contentRepos.forEach(function(repo){
+      repoString += "<li>" + repo.name + "</li>";
       repoList.innerHTML = repoString;
     });
 
