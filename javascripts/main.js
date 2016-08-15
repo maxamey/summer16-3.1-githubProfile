@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
   var requestMain = new XMLHttpRequest();
   var requestRepo = new XMLHttpRequest();
-  var repoList = document.querySelector(".repoList");
+  var repoList = document.querySelector(".repos");
   var name = document.querySelector(".name");
   var blog = document.querySelector(".blog");
   var location = document.querySelector(".location");
@@ -23,20 +23,20 @@ document.addEventListener("DOMContentLoaded", function(){
 
   requestRepo.addEventListener("load", function(e){
     var conentRepo = JSON.parse(e.target.response);
-    var listRepo = "";
+    var repoString = "";
     conentRepo.Search.forEach(function(output){
       listRepo += "<li>" + output + "</li>";
-      repoList.innerHTML = listRepo;
-    })
+      repoList.innerHTML = repoString;
+    });
 
-  })
+  });
 
 
 
 
   requestRepo.open("GET", "https://api.github.com/users/maxamey/repos");
   requestRepo.send(null);
-  
+
   requestMain.open("GET", "https://api.github.com/users/maxamey");
   requestMain.send(null);
 
